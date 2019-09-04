@@ -1,15 +1,24 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { withRouter } from "react-router-dom";
 
+@withRouter
 class authroute extends Component {
   constructor(props) {
     super(props);
     this.state = {};
   }
   componentDidMount() {
-    axios.get('api/user/info').then(res => {
+    axios.get("/user/info").then(res => {
+      console.log(res);
       if (res.status == 200) {
-        console.loga(res.data);
+        console.log(res.data);
+        if (res.data.code == 0) {
+          //有登录信息
+        } else {
+            console.log('login')
+          this.props.history.push("/login");
+        }
       }
     });
   }

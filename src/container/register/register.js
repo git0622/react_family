@@ -8,7 +8,6 @@ import {
   Radio
 } from "antd-mobile";
 import Logo from "../../component/logo/logo";
-import Authroute from "../../component/authroute/authroute";
 
 const RadioItem = Radio.RadioItem;
 
@@ -22,7 +21,6 @@ class register extends Component {
   render() {
     return (
       <div>
-        <Authroute />
         <Logo></Logo>
         <List>
           <InputItem>用户名</InputItem>
