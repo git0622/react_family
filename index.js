@@ -8,12 +8,24 @@ import {
   HashRouter
 } from "react-router-dom";
 import "./index.scss";
+import "./src/https.js";
 import Login from "./src/container/login/login";
 import Register from "./src/container/register/register";
 import AuthRoute from "./src/component/authroute/authroute";
 
+import reducers from "./src/reducer";
+import { Provider } from "react-redux";
+import thunk from 'redux-thunk'
+import { createStore, applyMiddleware, compose } from "redux";
 
-import CountWrapper from "./count/countWrapper.js";
+const store = createStore(
+  reducers,
+  compose(
+    applyMiddleware(thunk),
+    window.devToolsExtension ? window.devToolsExtension() : f => f
+  )
+);
+
 function Boss() {
   return <h2>Boss页面</h2>;
 }
@@ -21,7 +33,6 @@ class App extends Component {
   render() {
     return (
       <div className="family">
-        {/* <CountWrapper /> */}
         <HashRouter>
           <div>
             <AuthRoute></AuthRoute>
@@ -35,4 +46,9 @@ class App extends Component {
   }
 }
 
-ReactDOM.render(<App />, document.getElementById("app"));
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById("app")
+);

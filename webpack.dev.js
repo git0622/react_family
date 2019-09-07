@@ -8,7 +8,7 @@ module.exports = merge(common, {
   devServer: {
     contentBase: "./dist",
     hot: true, //允许在运行时更新各种模块，而无需进行完全刷新
-    port: 8011,
+    port: 8012,
     proxy: {
       // '/api': {
       "/": {
