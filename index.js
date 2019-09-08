@@ -29,7 +29,9 @@ const store = createStore(
 function Boss() {
   return <h2>Boss页面</h2>;
 }
+
 class App extends Component {
+ 
   render() {
     return (
       <div className="family">

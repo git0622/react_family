@@ -10,6 +10,8 @@ import {
 import Logo from "../../component/logo/logo";
 import { connect } from "react-redux";
 import { register } from "../../redux/user.redux.js";
+import { Redirect } from "react-router-dom";
+
 
 const RadioItem = Radio.RadioItem;
 @connect(
@@ -39,6 +41,7 @@ class Register extends Component {
   render() {
     return (
       <div>
+        {this.props.redirectTo ? <Redirect to={this.props.redirectTo} /> : null}
         <Logo></Logo>
         <List>
           {this.props.msg ? <p className="err-msg">{this.props.msg}</p> : null}
