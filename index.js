@@ -17,6 +17,7 @@ import reducers from "./src/reducer";
 import { Provider } from "react-redux";
 import thunk from 'redux-thunk'
 import { createStore, applyMiddleware, compose } from "redux";
+import BaseInfo from './src/container/baseInfo/baseInfo.js';
 
 const store = createStore(
   reducers,
@@ -38,6 +39,8 @@ class App extends Component {
         <HashRouter>
           <div>
             <AuthRoute></AuthRoute>
+
+            <Route path="/baseInfo" component={BaseInfo}></Route>
             <Route path="/boss" component={Boss}></Route>
             <Route path="/login" component={Login}></Route>
             <Route path="/register" component={Register}></Route>
