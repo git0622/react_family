@@ -16,6 +16,7 @@ class authroute extends Component {
   }
   componentDidMount() {
     axios.get("/user/info").then(res => {
+      console.log("res",res)
       if (res.status == 200) {
         if (res.data.code == 0) {
           //有登录信息

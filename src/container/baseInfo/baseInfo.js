@@ -1,7 +1,13 @@
 import React, { Component } from "react";
-import { NavBar, Icon, InputItem, TextareaItem } from "antd-mobile";
+import { NavBar, Icon, InputItem, TextareaItem, Button } from "antd-mobile";
 import AvatarSelector from "../../component/avatar-selector/avatar-selector.js";
+import { update } from "../../redux/user.redux.js";
+import { connect } from "react-redux";
 
+@connect(
+  state => state.user,
+  { update }
+)
 class baseInfo extends Component {
   constructor(props) {
     super(props);
@@ -34,6 +40,14 @@ class baseInfo extends Component {
           autoHeight
           title="职位要求"
         />
+        <Button
+          onClick={() => {
+            this.props.update(this.state);
+          }}
+          type="primary"
+        >
+          保存
+        </Button>
       </div>
     );
   }
