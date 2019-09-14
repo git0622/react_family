@@ -1,7 +1,11 @@
 import React, { Component } from "react";
 import { Grid, List } from "antd-mobile";
+import PropTypes from "prop-types";
 
 class avatarSelector extends Component {
+  static propTypes = {
+    selectAvatar: PropTypes.func.isRequired //isRequired设置属性为必须传递的值
+  };
   constructor(props) {
     super(props);
     this.state = {};
@@ -29,7 +33,7 @@ class avatarSelector extends Component {
             columnNum={5}
             onClick={elm => {
               this.setState(elm);
-            //   this.props.selectAvatar(elm.text);
+              this.props.selectAvatar(elm.text);
             }}
           />
         </List>

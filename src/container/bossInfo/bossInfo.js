@@ -8,11 +8,14 @@ import { connect } from "react-redux";
   state => state.user,
   { update }
 )
-class baseInfo extends Component {
+class bossInfo extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      title: ""
+      title: "",
+      desc:"",
+      company:"",
+      money:""
     };
   }
   handleChange(key, val) {
@@ -24,7 +27,11 @@ class baseInfo extends Component {
     return (
       <div>
         <NavBar mode="dark">Boss完善信息页</NavBar>
-        <AvatarSelector selectAvatar={this.selectAvatar}></AvatarSelector>
+        <AvatarSelector selectAvatar={(imgname)=>{
+						this.setState({
+							avatar:imgname
+						})
+					}}></AvatarSelector>
         <InputItem onChange={v => this.handleChange("title", v)}>
           招聘职位
         </InputItem>
@@ -53,4 +60,4 @@ class baseInfo extends Component {
   }
 }
 
-export default baseInfo;
+export default bossInfo;

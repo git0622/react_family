@@ -10,7 +10,6 @@ axios.interceptors.request.use(
   },
   function(error) {
     // 对请求失败做处理
-    Toast.hide()
     return Promise.reject(error);
   }
 );
@@ -26,7 +25,6 @@ axios.interceptors.response.use(
   },
   function(error) {
     // 对响应错误做处理
-    Toast.hide()
     return Promise.reject(error);
   }
 );
