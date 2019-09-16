@@ -19,6 +19,7 @@ import thunk from "redux-thunk";
 import { createStore, applyMiddleware, compose } from "redux";
 import BossInfo from "./src/container/bossInfo/bossInfo.js";
 import GeniusInfo from "./src/container/geniusInfo/geniusInfo.js";
+import Dashboard from "./src/component/dashboard/dashboard.js";
 
 const store = createStore(
   reducers,
@@ -28,9 +29,6 @@ const store = createStore(
   )
 );
 
-function Boss() {
-  return <h2>Boss页面</h2>;
-}
 
 class App extends Component {
   render() {
@@ -39,11 +37,15 @@ class App extends Component {
         <HashRouter>
           <div>
             <AuthRoute></AuthRoute>
-            <Route path="/GeniusInfo" component={GeniusInfo}></Route>
-            <Route path="/bossInfo" component={BossInfo}></Route>
-            <Route path="/boss" component={Boss}></Route>
-            <Route path="/login" component={Login}></Route>
-            <Route path="/register" component={Register}></Route>
+            {/* Switch 只要命中前面的路由，后面的就不用管了 */}
+            <Switch>
+              <Route path="/geniusInfo" component={GeniusInfo}></Route>
+              <Route path="/bossInfo" component={BossInfo}></Route>
+              <Route path="/login" component={Login}></Route>
+              <Route path="/register" component={Register}></Route>
+              {/* <Route path="/dashboard" component={Dashboard}></Route> */}
+              <Route component={Dashboard}></Route>
+            </Switch>
           </div>
         </HashRouter>
       </div>

@@ -3,6 +3,7 @@ import { NavBar, Icon, InputItem, TextareaItem, Button } from "antd-mobile";
 import AvatarSelector from "../../component/avatar-selector/avatar-selector.js";
 import { update } from "../../redux/user.redux.js";
 import { connect } from "react-redux";
+import {Redirect} from 'react-router-dom';
 
 @connect(
   state => state.user,
@@ -21,8 +22,14 @@ class geniusInfo extends Component {
     });
   }
   render() {
+    const path = this.props.location.pathname
+		const redirect = this.props.redirectTo
     return (
       <div>
+        {redirect && redirect !== path ? (
+          <Redirect to={this.props.redirectTo}></Redirect>
+        ) : null}
+
         <NavBar mode="dark">牛人完善信息页</NavBar>
         <AvatarSelector
           selectAvatar={imgname => {

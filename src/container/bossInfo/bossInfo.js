@@ -3,6 +3,7 @@ import { NavBar, Icon, InputItem, TextareaItem, Button } from "antd-mobile";
 import AvatarSelector from "../../component/avatar-selector/avatar-selector.js";
 import { update } from "../../redux/user.redux.js";
 import { connect } from "react-redux";
+import {Redirect} from 'react-router-dom';
 
 @connect(
   state => state.user,
@@ -13,9 +14,9 @@ class bossInfo extends Component {
     super(props);
     this.state = {
       title: "",
-      desc:"",
-      company:"",
-      money:""
+      desc: "",
+      company: "",
+      money: ""
     };
   }
   handleChange(key, val) {
@@ -24,14 +25,21 @@ class bossInfo extends Component {
     });
   }
   render() {
+    const path = this.props.location.pathname;
+    const redirect = this.props.redirectTo;
     return (
       <div>
+        {redirect && redirect !== path ? (
+          <Redirect to={this.props.redirectTo}></Redirect>
+        ) : null}
         <NavBar mode="dark">Boss完善信息页</NavBar>
-        <AvatarSelector selectAvatar={(imgname)=>{
-						this.setState({
-							avatar:imgname
-						})
-					}}></AvatarSelector>
+        <AvatarSelector
+          selectAvatar={imgname => {
+            this.setState({
+              avatar: imgname
+            });
+          }}
+        ></AvatarSelector>
         <InputItem onChange={v => this.handleChange("title", v)}>
           招聘职位
         </InputItem>
