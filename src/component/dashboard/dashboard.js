@@ -61,7 +61,6 @@ class Dashboard extends Component {
         <NavBar className="fixd-header" mode="dard">
           {navList.find(v => v.path == pathname).title}
         </NavBar>
-        <h2>footer</h2>
         <div style={{ marginTop: 45 }}>
           <Switch>
             {navList.map(v => (
